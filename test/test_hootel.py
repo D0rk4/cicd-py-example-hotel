@@ -24,14 +24,15 @@ class TestHootel(object):
     @allure.severity(allure.severity_level.TRIVIAL)
     @allure.tag("login")
     def test_login(self):
-        login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
-        login_btn.click()
-
+        
         email_input = self.browser.find_element(By.ID, 'email')
         email_input.send_keys('hiwasi1765@wisnick.com')
 
         password_input = self.browser.find_element(By.ID, 'password')
         password_input.send_keys('tesztelek2021')
+
+        login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
+        login_btn.click()
 
         submit_btn = self.browser.find_element(By.NAME, 'submit')
         submit_btn.click()
