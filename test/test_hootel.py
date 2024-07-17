@@ -14,7 +14,7 @@ class TestHootel(object):
         options.add_argument('--headless')
         self.browser = webdriver.Chrome(options=options)
         self.browser.get(URL)
-        self.browser.maximize_window()
+        self.browser.set.size(1200*800)
 
     def teardown_method(self):
         self.browser.quit()
@@ -24,6 +24,9 @@ class TestHootel(object):
     @allure.severity(allure.severity_level.TRIVIAL)
     @allure.tag("login")
     def test_login(self):
+
+        login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
+        login_btn.click()
         
         email_input = self.browser.find_element(By.ID, 'email')
         email_input.send_keys('hiwasi1765@wisnick.com')
@@ -31,8 +34,7 @@ class TestHootel(object):
         password_input = self.browser.find_element(By.ID, 'password')
         password_input.send_keys('tesztelek2021')
 
-        login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
-        login_btn.click()
+        time.sleep(1)
 
         submit_btn = self.browser.find_element(By.NAME, 'submit')
         submit_btn.click()
